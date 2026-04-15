@@ -2,41 +2,61 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>HEVSEL-GÖZCÜ | Milli Savunma Paneli</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEVSEL-GÖZCÜ | Savunma Sistemleri</title>
     <style>
-        body { background: #0a0d0a; color: #2ecc71; font-family: 'Segoe UI', sans-serif; margin: 0; }
-        .top-bar { background: #1a1a1a; border-bottom: 3px solid #27ae60; padding: 15px; text-align: center; }
-        .main-container { display: flex; flex-wrap: wrap; padding: 20px; gap: 20px; justify-content: center; }
-        .card { background: #121612; border: 1px solid #27ae60; padding: 20px; width: 350px; border-radius: 8px; }
-        .radar-box { text-align: center; position: relative; }
-        .radar-circle { width: 150px; height: 150px; border: 2px solid #2ecc71; border-radius: 50%; margin: auto; position: relative; background: radial-gradient(circle, #1b3d1b 0%, #0a0d0a 80%); }
-        .radar-sweep { width: 50%; height: 2px; background: #2ecc71; position: absolute; top: 50%; left: 50%; transform-origin: left; animation: sweep 3s linear infinite; }
-        @keyframes sweep { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        .status-online { color: #2ecc71; font-weight: bold; }
-        .alert-active { color: #e74c3c; animation: flash 1s infinite; }
-        @keyframes flash { 50% { opacity: 0; } }
+        :root { --main-color: #2ecc71; --bg-dark: #0a0d0a; --accent: #f39c12; }
+        body { background: var(--bg-dark); color: white; font-family: 'Courier New', monospace; margin: 0; padding: 0; }
+        .header { background: rgba(20, 30, 20, 0.9); border-bottom: 2px solid var(--main-color); padding: 20px; text-align: center; }
+        .branding { color: var(--accent); font-size: 0.8em; letter-spacing: 2px; }
+        .container { display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap: 15px; padding: 20px; }
+        .box { border: 1px solid var(--main-color); background: rgba(46, 204, 113, 0.05); padding: 15px; border-radius: 5px; }
+        .radar { width: 150px; height: 150px; border: 2px solid var(--main-color); border-radius: 50%; margin: auto; position: relative; overflow: hidden; }
+        .sweep { width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(46, 204, 113, 0.4)); position: absolute; top: 0; left: 50%; transform-origin: left; animation: radar-sweep 4s linear infinite; }
+        @keyframes radar-sweep { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .alert { color: #e74c3c; animation: blink 1s infinite; font-weight: bold; }
+        @keyframes blink { 50% { opacity: 0; } }
+        .log-item { font-size: 0.85em; margin-bottom: 5px; border-bottom: 1px solid #222; }
+        footer { text-align: center; padding: 10px; font-size: 0.7em; color: #555; position: fixed; bottom: 0; width: 100%; }
     </style>
 </head>
 <body>
-    <div class="top-bar">
+    <div class="header">
+        <div class="branding">T.C. MİLLİ SAVUNMA BAKANLIĞI VİZYONU İLE</div>
         <h1>HEVSEL-GÖZCÜ V1.0</h1>
-        <p>ÖZER SAVUNMA TEKNOLOJİLERİ | DİYARBAKIR STRATEJİK ANALİZ MERKEZİ</p>
+        <p>Hazırlayan: <strong>MUHAMMED EKREM ÖZER</strong></p>
     </div>
 
-    <div class="main-container">
-        <div class="card radar-box">
-            <h3>ANLIK TARAMA: SEKTÖR-21</h3>
-            <div class="radar-circle"><div class="radar-sweep"></div></div>
-            <p>Sistem Durumu: <span class="status-online">AKTİF</span></p>
+    <div class="container">
+        <div class="box">
+            <h3>SİSTEM DURUMU</h3>
+            <p>Bağlantı: <span style="color:var(--main-color)">ÇEVRİMİÇİ</span></p>
+            <p>Konum: Diyarbakır / Hevsel</p>
+            <p>Modül: Otonom Tarama</p>
+            <hr>
+            <p class="alert">DURUM: HAZIRLIK AŞAMASINDA</p>
         </div>
 
-        <div class="card">
-            <h3>TEHDİT ANALİZİ</h3>
-            <p id="target">Hedef Tespiti: <span style="color:white">YOK</span></p>
-            <p id="location">Konum: <span style="color:white">HEVSEL BATI HATTI</span></p>
-            <hr border-color="#27ae60">
-            <p class="alert-active">BİLDİRİM: TÜBİTAK 2204-A MODÜLÜ BAĞLI</p>
+        <div class="box" style="text-align: center;">
+            <h3>DİJİTAL RADAR TARAMASI</h3>
+            <div class="radar"><div class="sweep"></div></div>
+            <p style="margin-top: 15px;">Sektör: 21-A (Surlar)</p>
+            <p>Tarama Menzili: 500m</p>
+        </div>
+
+        <div class="box">
+            <h3>OPERASYON GÜNLÜĞÜ</h3>
+            <div id="logs">
+                <div class="log-item">[15:44] Sistem başlatılıyor...</div>
+                <div class="log-item">[15:44] ASELSAN algoritması yüklendi.</div>
+                <div class="log-item">[15:45] TÜBİTAK 2204-A veri yolu aktif.</div>
+                <div class="log-item" style="color:var(--accent)">[UYARI] Yazılım geliştirme aşamasında.</div>
+            </div>
         </div>
     </div>
+
+    <footer>
+        © 2026 Özer Savunma Teknolojileri - Ziya Gökalp Anadolu Lisesi
+    </footer>
 </body>
 </html>
