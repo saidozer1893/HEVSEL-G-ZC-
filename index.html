@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>HEVSEL-GÖZCÜ | Milli Savunma Paneli</title>
+    <style>
+        body { background: #0a0d0a; color: #2ecc71; font-family: 'Segoe UI', sans-serif; margin: 0; }
+        .top-bar { background: #1a1a1a; border-bottom: 3px solid #27ae60; padding: 15px; text-align: center; }
+        .main-container { display: flex; flex-wrap: wrap; padding: 20px; gap: 20px; justify-content: center; }
+        .card { background: #121612; border: 1px solid #27ae60; padding: 20px; width: 350px; border-radius: 8px; }
+        .radar-box { text-align: center; position: relative; }
+        .radar-circle { width: 150px; height: 150px; border: 2px solid #2ecc71; border-radius: 50%; margin: auto; position: relative; background: radial-gradient(circle, #1b3d1b 0%, #0a0d0a 80%); }
+        .radar-sweep { width: 50%; height: 2px; background: #2ecc71; position: absolute; top: 50%; left: 50%; transform-origin: left; animation: sweep 3s linear infinite; }
+        @keyframes sweep { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .status-online { color: #2ecc71; font-weight: bold; }
+        .alert-active { color: #e74c3c; animation: flash 1s infinite; }
+        @keyframes flash { 50% { opacity: 0; } }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <h1>HEVSEL-GÖZCÜ V1.0</h1>
+        <p>ÖZER SAVUNMA TEKNOLOJİLERİ | DİYARBAKIR STRATEJİK ANALİZ MERKEZİ</p>
+    </div>
+
+    <div class="main-container">
+        <div class="card radar-box">
+            <h3>ANLIK TARAMA: SEKTÖR-21</h3>
+            <div class="radar-circle"><div class="radar-sweep"></div></div>
+            <p>Sistem Durumu: <span class="status-online">AKTİF</span></p>
+        </div>
+
+        <div class="card">
+            <h3>TEHDİT ANALİZİ</h3>
+            <p id="target">Hedef Tespiti: <span style="color:white">YOK</span></p>
+            <p id="location">Konum: <span style="color:white">HEVSEL BATI HATTI</span></p>
+            <hr border-color="#27ae60">
+            <p class="alert-active">BİLDİRİM: TÜBİTAK 2204-A MODÜLÜ BAĞLI</p>
+        </div>
+    </div>
+</body>
+</html>
